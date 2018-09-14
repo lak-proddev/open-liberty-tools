@@ -12,7 +12,7 @@
  -->
 
 <plugin>
-  <extension point="org.eclipse.wst.server.core.runtimeTypes">
+<!--  <extension point="org.eclipse.wst.server.core.runtimeTypes">
     <runtimeType
       id="com.ibm.ws.st.runtime.v85.was"
       name="%runtimeNameV85"
@@ -43,14 +43,14 @@
       class="com.ibm.ws.st.core.internal.WebSphereServer"
       behaviourClass="com.ibm.ws.st.core.internal.WebSphereServerBehaviour">
     </serverType>
-  </extension>
+  </extension>-->
   
   <extension point="org.eclipse.wst.server.core.runtimeTypes">
     <runtimeType
       id="com.ibm.ws.st.runtime.wlp"
       name="%runtimeName"
       description="%runtimeDescription"
-      vendor="IBM"
+      vendor="WebSphere Liberty Profile"
       version="1.0"
       facetRuntimeComponent="com.ibm.ws.st.runtime"
       facetRuntimeVersion="1.0"

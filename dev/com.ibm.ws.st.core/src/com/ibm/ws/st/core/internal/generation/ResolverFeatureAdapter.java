@@ -352,7 +352,6 @@ public class ResolverFeatureAdapter implements ProvisioningFeatureDefinition {
             return null;
         }
 
-        @Override
         public String getRequiredOSGiEE() {
             return null;
         }
