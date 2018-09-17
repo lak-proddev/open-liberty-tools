@@ -71,9 +71,12 @@ import org.eclipse.wst.server.core.internal.ResourceManager;
 import org.eclipse.wst.server.core.internal.Server;
 import org.eclipse.wst.server.core.model.IModuleResource;
 import org.eclipse.wst.server.core.model.IModuleResourceDelta;
+import org.eclipse.wst.server.core.model.IPublishedModuleDeployment;
 import org.eclipse.wst.server.core.model.ServerBehaviourDelegate;
 import org.eclipse.wst.server.core.util.SocketUtil;
 
+import com.genuitec.eclipse.server.core.GenuitecAppServerBehaviour;
+import com.genuitec.eclipse.server.core.IGenuitecServerLaunchConfig;
 import com.ibm.ws.st.common.core.ext.internal.servertype.AbstractServerBehaviourExtension;
 import com.ibm.ws.st.common.core.ext.internal.servertype.ServerTypeExtensionFactory;
 import com.ibm.ws.st.common.core.ext.internal.setuphandlers.PlatformHandlerFactory.PlatformType;
@@ -89,7 +92,7 @@ import com.ibm.ws.st.core.internal.launch.LibertyRemoteUtilityExecutionDelegate;
 import com.ibm.ws.st.core.internal.launch.RemoteStartServer;
 
 @SuppressWarnings("restriction")
-public class WebSphereServerBehaviour extends ServerBehaviourDelegate implements IAdaptable {
+public class WebSphereServerBehaviour extends GenuitecAppServerBehaviour implements IAdaptable {
     private static final String EXTERNAL_APP_PREFIX = "was.external";
     private static final String EXTERNAL_APP_VERSION = "1.0";
 
@@ -693,9 +696,9 @@ public class WebSphereServerBehaviour extends ServerBehaviourDelegate implements
     /**
      * Setup for starting the server.
      *
-     * @param launch ILaunch
+     * @param launch     ILaunch
      * @param launchMode String
-     * @param monitor IProgressMonitor
+     * @param monitor    IProgressMonitor
      * @throws CoreException if anything goes wrong
      */
     public void preLaunch(ILaunch launch, String launchMode, IProgressMonitor monitor) throws CoreException {
@@ -1337,7 +1340,7 @@ public class WebSphereServerBehaviour extends ServerBehaviourDelegate implements
      * reset to <code>false</code> during every launch.
      *
      * @param clean <code>true</code> if the server should be cleaned on next startup,
-     *            and <code>false</code> otherwise.
+     *                  and <code>false</code> otherwise.
      */
     public void setCleanOnStartup(boolean clean) {
         cleanOnStartup = clean;
@@ -2632,6 +2635,20 @@ public class WebSphereServerBehaviour extends ServerBehaviourDelegate implements
                 timeout = MAX;
             }
         }
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    protected IGenuitecServerLaunchConfig createServerLaunchConfig(boolean isShutdown) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    protected String getDeploymentLocation(IPublishedModuleDeployment rootDeployment) throws CoreException {
+        // TODO Auto-generated method stub
+        return null;
     }
 
 }

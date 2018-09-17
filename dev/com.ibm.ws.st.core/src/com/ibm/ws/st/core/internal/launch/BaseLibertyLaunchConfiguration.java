@@ -99,7 +99,7 @@ public class BaseLibertyLaunchConfiguration extends AbstractLaunchConfigurationE
         if (monitor.isCanceled())
             return;
 
-        IStatus status2 = websphereServer.validate();
+        IStatus status2 = websphereServer.validate2();
         if (status2 != null && !status2.isOK())
             throw new CoreException(status2);
 
@@ -477,10 +477,10 @@ public class BaseLibertyLaunchConfiguration extends AbstractLaunchConfigurationE
      * Creates a new debug target for the given virtual machine and system process
      * that is connected on the specified port for the given launch.
      *
-     * @param launch launch to add the target to
-     * @param port port the VM is connected to
+     * @param launch  launch to add the target to
+     * @param port    port the VM is connected to
      * @param process associated system process
-     * @param vm JDI virtual machine
+     * @param vm      JDI virtual machine
      * @return the {@link IDebugTarget}
      */
     private IDebugTarget createLocalJDTDebugTarget(ILaunch launch, int port, IProcess process, VirtualMachine vm) {

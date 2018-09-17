@@ -8,8 +8,10 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
 Bundle-Activator: com.ibm.ws.st.jee.core.internal.Activator
-Import-Package: com.ibm.ws.st.common.core.internal,
+Import-Package: com.genuitec.eclipse.runtime.wtp,
+ com.genuitec.eclipse.server.core,
  com.ibm.ws.st.common.core.ext.internal.servertype,
+ com.ibm.ws.st.common.core.internal,
  com.ibm.ws.st.core.internal,
  com.ibm.ws.st.core.internal.config,
  com.ibm.ws.st.core.internal.jmx,

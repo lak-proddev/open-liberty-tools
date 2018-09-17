@@ -48,10 +48,10 @@ import org.eclipse.wst.server.core.IServer;
 import org.eclipse.wst.server.core.IServerWorkingCopy;
 import org.eclipse.wst.server.core.ServerPort;
 import org.eclipse.wst.server.core.model.IModuleResourceDelta;
-import org.eclipse.wst.server.core.model.IURLProvider;
-import org.eclipse.wst.server.core.model.ServerDelegate;
 import org.eclipse.wst.server.core.util.SocketUtil;
 
+import com.genuitec.eclipse.core.util.Util;
+import com.genuitec.eclipse.server.core.GenuitecAppServer;
 import com.ibm.websphere.crypto.PasswordUtil;
 import com.ibm.ws.st.common.core.ext.internal.UnsupportedServiceException;
 import com.ibm.ws.st.common.core.ext.internal.servertype.AbstractServerExtension;
@@ -67,7 +67,7 @@ import com.ibm.ws.st.core.internal.jmx.JMXConnection;
 import com.ibm.ws.st.core.internal.jmx.JMXConnectionInfo;
 import com.ibm.ws.st.core.internal.remote.RemoteUtils;
 
-public class WebSphereServer extends ServerDelegate implements IURLProvider, IAdaptable {
+public class WebSphereServer extends GenuitecAppServer implements IAdaptable {
     public static final String PROP_SERVER_NAME = "serverName";
     public static final String PROP_LOOSE_CONFIG = "looseConfig";
     public static final String PROP_STOP_ON_SHUTDOWN = "stopOnShutdown";
@@ -102,7 +102,7 @@ public class WebSphereServer extends ServerDelegate implements IURLProvider, IAd
      * Add a property change listener
      *
      * @param listener
-     *            java.beans.PropertyChangeListener
+     *                     java.beans.PropertyChangeListener
      */
     public void addPropertyChangeListener(PropertyChangeListener listener) {
         if (propertyListeners == null)
@@ -810,17 +810,22 @@ public class WebSphereServer extends ServerDelegate implements IURLProvider, IAd
         return null;
     }
 
-    public IStatus validate() {
+    @Override
+    public IStatus[] validate() {
         // validate the local server name
         String name = getServer().getName();
         if (name == null || name.isEmpty())
-            return new Status(IStatus.ERROR, Activator.PLUGIN_ID, 0, "", null);
+            return new IStatus[] { new Status(IStatus.ERROR, Activator.PLUGIN_ID, 0, "", null) };
 
         if (getServerInfo() == null)
-            return new Status(IStatus.ERROR, Activator.PLUGIN_ID, NLS.bind(Messages.errorNoServer, getServerName()));
+            return new IStatus[] { new Status(IStatus.ERROR, Activator.PLUGIN_ID, NLS.bind(Messages.errorNoServer, getServerName())) };
 
         // validate the WebSphere server name
-        return validateServerName(getServerName());
+        return new IStatus[] { validateServerName(getServerName()) };
+    }
+
+    public IStatus validate2() {
+        return Util.findMostSevere(validate());
     }
 
     public static IStatus validateServerName(String serverName) {

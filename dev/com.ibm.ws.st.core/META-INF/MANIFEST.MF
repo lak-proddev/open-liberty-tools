@@ -28,7 +28,10 @@ Export-Package: com.ibm.websphere.crypto,
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
 Bundle-Activator: com.ibm.ws.st.core.internal.Activator
-Import-Package: com.ibm.ws.kernel.feature,
+Import-Package: com.genuitec.eclipse.core.util,
+ com.genuitec.eclipse.runtime.wtp,
+ com.genuitec.eclipse.server.core,
+ com.ibm.ws.kernel.feature,
  com.ibm.ws.kernel.feature.provisioning,
  com.ibm.ws.kernel.feature.resolver,
  com.ibm.ws.st.common.core.ext.internal,

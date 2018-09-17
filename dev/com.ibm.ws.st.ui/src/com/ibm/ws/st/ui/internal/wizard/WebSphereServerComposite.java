@@ -6,13 +6,13 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     IBM Corporation - initial API and implementation
+ * IBM Corporation - initial API and implementation
  *******************************************************************************/
 package com.ibm.ws.st.ui.internal.wizard;
 
-//import java.io.File;
+// import java.io.File;
 
-//import org.eclipse.core.runtime.IPath;
+// import org.eclipse.core.runtime.IPath;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -419,7 +419,7 @@ public class WebSphereServerComposite extends AbstractWebSphereServerComposite {
         if (server.getServerName() == null)
             return new Status(IStatus.ERROR, Activator.PLUGIN_ID, Messages.errorNoServers);
 
-        IStatus status = server.validate();
+        IStatus status = server.validate2();
         if (status == null || status.isOK()) {
             // check for server name already in use
             String serverName = server.getServerName();

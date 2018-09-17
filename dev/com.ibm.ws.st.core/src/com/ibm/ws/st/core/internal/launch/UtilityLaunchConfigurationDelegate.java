@@ -6,7 +6,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     IBM Corporation - initial API and implementation
+ * IBM Corporation - initial API and implementation
  *******************************************************************************/
 package com.ibm.ws.st.core.internal.launch;
 
@@ -109,7 +109,7 @@ public class UtilityLaunchConfigurationDelegate extends LaunchConfigurationDeleg
         if (monitor.isCanceled())
             return;
 
-        IStatus status2 = websphereServer.validate();
+        IStatus status2 = websphereServer.validate2();
         if (status2 != null && !status2.isOK())
             throw new CoreException(status2);
 

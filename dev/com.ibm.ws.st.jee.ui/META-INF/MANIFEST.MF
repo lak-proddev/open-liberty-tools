@@ -8,7 +8,8 @@ Bundle-Vendor: IBM
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
-Import-Package: com.ibm.ws.st.common.core.internal,
+Import-Package: com.genuitec.eclipse.server.core,
+ com.ibm.ws.st.common.core.internal,
  com.ibm.ws.st.core.internal,
  com.ibm.ws.st.core.internal.config,
  com.ibm.ws.st.jee.core.internal,
@@ -34,7 +35,7 @@ Import-Package: com.ibm.ws.st.common.core.internal,
  org.eclipse.ui.plugin,
  org.eclipse.wst.common.project.facet.ui,
  org.eclipse.wst.server.core,
- org.eclipse.wst.server.core.model,
  org.eclipse.wst.server.core.internal,
+ org.eclipse.wst.server.core.model,
  org.osgi.framework;version="[1.5.0,2.0.0)"
 Export-Package: com.ibm.ws.st.jee.ui.internal; x-internal:=true
